@@ -33,13 +33,33 @@
             height:25%;
         }
     </style>
+    <script src="jquery-3.3.1.min.js"></script>
+    <script src="story.js"></script>
+    <script>
+
+        $(function() {
+
+            var lines = story.split("\n\n");
+            var lineIndex = 0;
+
+            function drawLine() {
+                var formattedLine = lines[lineIndex++]; 
+                var formattedLine = formattedLine.replace("\n", "<br/>"); 
+                $('#text').html( formattedLine);                
+            }
+
+            $('.myImage').click(function() {
+                drawLine();
+            });
+
+            drawLine();
+            
+        });
+    </script>
 </head>
 <body>
     <div class="myImage">
-        <span>
-            A Text over an image. 
-            <a href="#" style="color:#FD9C00;text-decoration:none;">See more examples.</a>
-        </span>
+        <span id = "text"></span>
     </div>
 </body>
 </html>
